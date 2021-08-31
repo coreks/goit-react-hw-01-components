@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
 import css from 'components/PageUser/PageUser.module.css';
 
-export const PageUser = ({
-  name,
-  tag,
-  location,
-  avatar,
-  followers,
-  views,
-  likes,
-}) => {
+export const PageUser = ({ user }) => {
+  const {
+    name,
+    tag,
+    location,
+    avatar,
+    stats: { followers, views, likes },
+  } = user;
+
   return (
     <div className={css.profile}>
       <div className={css.description}>
         <img src={avatar} alt={name} className={css.avatar} />
         <p className={css.name}>{name}</p>
-        <p className={css.tag}>{tag}</p>
+        <p className={css.tag}>@{tag}</p>
         <p className={css.location}>{location}</p>
       </div>
 
@@ -38,11 +38,11 @@ export const PageUser = ({
 };
 
 PageUser.propTypes = {
-  name: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
-  followers: PropTypes.number.isRequired,
-  views: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  tag: PropTypes.string,
+  location: PropTypes.string,
+  avatar: PropTypes.string,
+  followers: PropTypes.number,
+  views: PropTypes.number,
+  likes: PropTypes.number,
 };

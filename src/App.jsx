@@ -1,30 +1,19 @@
-import user from 'components/PageUser/user.json';
-import { PageUserInfo } from 'components/PageUser/PageUserInfo.jsx';
-import statisticalData from 'components/Statistics/statistical-data.json';
-import { StatisticsList } from 'components/Statistics/StatisticsList.jsx';
+import user from './data/user.json';
+import statisticalData from './data/statistical-data.json';
+import friends from './data/friends.json';
+import transactions from './data/transactions.json';
+import { PageUser } from 'components/PageUser/PageUser.jsx';
+import { Statistics } from 'components/Statistics/Statistics.jsx';
 import { FriendList } from 'components/FriendList/FriendList';
-import friends from 'components/FriendList/friends.json';
 import { TransactionList } from 'components/TransactionHistory/TransactionList';
-import transactions from 'components/TransactionHistory/transactions.json';
 
 export const App = () => {
   return (
     <>
-      <section>
-        <PageUserInfo user={user} />
-      </section>
-
-      <section>
-        <StatisticsList stats={statisticalData} />
-      </section>
-
-      <section>
-        <FriendList friends={friends} />
-      </section>
-
-      <section>
-        <TransactionList transactions={transactions} />
-      </section>
+      <PageUser user={user} />
+      <Statistics title={'Upload stats'} stats={statisticalData} />
+      <FriendList friends={friends} />
+      <TransactionList transactions={transactions} />
     </>
   );
 };
